@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-website
+spec:
+  replicas: 2  # Number of replicas (pods)
+  selector:
+    matchLabels:
+      app: static-website
+  template:
+    metadata:
+      labels:
+        app: static-website
+    spec:
+      containers:
+      - name: static-website
+        image: johndoe/static-website:v1  # The image pushed to Docker Hub
+        ports:
+        - containerPort: 80
